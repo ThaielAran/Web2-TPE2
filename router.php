@@ -15,13 +15,15 @@ ACCION                         URL                      DESTINO
 Mostrar todas las reseñas      /reviews                 review.controller->showReviews()
 Mostrar reseña                 /reviews/id              review.controller->showReview($id)
 Cargar reseña                  /addReview               review.controller->add()
-Modificar reseña               /editReview/id           review.controller->edit($id)
+Modificar reseña               /editReview/id           review.controller->editReviewForm($id)
+Enviar cambios                 /editReview/id           review.controller->editReview($id)
 Eliminar reseña                /removeReview/id         review.controller->remove($id)
 
 Mostrar todas las pelis        /movies                  movie.controller->showMovies()
 Mostrar peli                   /movies/id               movie.controller->showMovie($id)
 Cargar peli                    /addMovie                movie.controller->add()
-Modificar peli                 /editMovie/id            movie.controller->edit($id)
+Modificar peli                 /editMovieForm/id        movie.controller->editMovieForm($id)
+Enviar cambios                 /editMovie/id            movie.controller->editMovie($id)
 Eliminar peli                  /removeMovie/id          movie.controller->remove($id)
 
 Loguear                        /login                   auth.controller->login()
@@ -45,6 +47,10 @@ switch ($params[0]) {
         $controller = new ReviewController();
         $controller->addReview();
         break;
+    case 'editReviewForm':
+        $controller = new ReviewController();
+        $controller->editReviewForm($params[1]);
+        break;    
     case 'editReview':
         $controller = new ReviewController();
         $controller->editReview($params[1]);
@@ -65,6 +71,10 @@ switch ($params[0]) {
     case 'addMovie':
         $controller = new MovieController();
         $controller->addMovie();
+        break;
+    case 'editMovieForm':
+        $controller = new MovieController();
+        $controller->editMovieForm($params[1]);
         break;
     case 'editMovie':
         $controller = new MovieController();

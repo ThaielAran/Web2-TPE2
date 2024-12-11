@@ -14,4 +14,7 @@ class ReviewView extends View{
         $form = './app/templates/form.edit.review.phtml';
         require './app/templates/list.reviews.phtml';
     }
+    public function error($errorString){
+        require './app/templates/error.phtml';
+    }
 }

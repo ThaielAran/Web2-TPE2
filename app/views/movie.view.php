@@ -14,4 +14,7 @@ class MovieView extends View{
         $form = './app/templates/form.edit.movie.phtml';
         require './app/templates/list.movies.phtml';
     }
+    public function error($errorString){
+        require './app/templates/error.phtml';
+    }
 }
