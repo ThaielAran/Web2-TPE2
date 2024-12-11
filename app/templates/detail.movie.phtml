@@ -1,0 +1,34 @@
+<?php require './app/templates/header.phtml' ?>
+
+<h4>Sobre la Pelicula</h4>
+<ul class="list-group">
+    <li class="list-group-item item-task">
+        <div>
+            <h5><?= $movie->title ?></h5>
+            <p>Director: <?= $movie->director ?></p>
+            <p>Año de Estreno: <?= $movie->release_date ?></p>
+            <p>Duracion: <?= $movie->runtime ?></p>
+            <p>Genero: <?= $movie->genre ?></p>
+            <p>Sinopsis: <?= $movie->synopsis ?></p>
+        </div>
+    </li>
+</ul>
+
+<!-- Listado de reseñas de la pelicula, Refactor a otra parte del codigo? -->
+<h5>Reseñas:</h5>
+<ul class="list-group">
+    <?php if (!empty($reviews)): ?>
+        <?php foreach ($reviews as $review): ?>
+            <li class="list-group-item">
+                <div>
+                    <p><strong>Calificación: <?= $review->rating ?></strong></p>
+                    <p><?= $review->body ?></p>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <li class="list-group-item">No hay reseñas para esta película.</li>
+    <?php endif; ?>
+</ul>
+
+<?php require './app/templates/footer.phtml' ?>

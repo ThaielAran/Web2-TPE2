@@ -1,0 +1,47 @@
+<?php require './app/templates/header.phtml' ?>
+
+<h4>Peliculas</h4>
+
+<?php if ($this->session) : require $form; endif ?>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Director</th>
+            <th>Sinopsis</th>
+            <th>Estreno</th>
+            <th>Duracion</th>
+            <th>Genero</th>
+            <?php if ($this->session) : ?>
+                <th>Acciones</th>
+            <?php endif; ?>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($movies as $movie) : ?>
+            <tr>
+                <td><a href="movies/<?= $movie->id_movie ?>"><?= $movie->title ?></a></td>
+                <td><?= $movie->director ?></td>
+                <td><?= $movie->synopsis ?></td>
+                <td><?= $movie->release_date ?></td>
+                <td><?= $movie->runtime ?></td>
+                <td><?= $movie->genre ?></td>
+
+                <?php if ($this->session) : ?>
+                    <td>
+                        <a href="editMovieForm/<?= $movie->id_movie ?>" class="btn btn-primary">Editar</a>
+                        <a href="removeMovie/<?= $movie->id_movie ?>" class="btn btn-danger"
+                            onclick="return confirm('¿Estás seguro de que queres borrar esta película?');">Borrar</a>
+                    </td>
+                <?php endif ?>
+            </tr>
+
+        <?php endforeach ?>
+    </tbody>
+
+</table>
+
+<?php require './app/templates/footer.phtml' ?>

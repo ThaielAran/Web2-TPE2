@@ -1,0 +1,42 @@
+<?php require './app/templates/header.phtml' ?>
+
+<h4>Reseñas</h4>
+
+<?php if ($this->session) : require $form; endif ?>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Reseña</th>
+            <th>Pelicula</th>
+            <th>Calificacion</th>
+            <th>Cuerpo de la reseña</th>
+            <?php if ($this->session) : ?>
+                <th>Acciones</th>
+            <?php endif; ?>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($reviews as $review) : ?>
+            <tr>
+                <td><a href="reviews/<?= $review->id_review ?>"><?= htmlspecialchars($review->id_review) ?></a></td>
+                <td><a href="movies/<?= $review->id_movie ?>"><?= htmlspecialchars($review->title) ?></a></td>
+                <td><?= $review->rating ?></td>
+                <td><?= $review->body ?></td>
+
+                <?php if ($this->session) : ?>
+                    <td>
+                        <a href="editReviewForm/<?= $review->id_review ?> " class="btn btn-primary">Editar</a>
+                        <a href="removeReview/<?= $review->id_review ?>" class="btn btn-danger"
+                            onclick="return confirm('¿Estás seguro de que queres borrar esta reseña?');">Borrar</a>
+                    </td>
+                <?php endif ?>
+            </tr>
+
+        <?php endforeach ?>
+    </tbody>
+
+</table>
+
+<?php require './app/templates/footer.phtml' ?>
