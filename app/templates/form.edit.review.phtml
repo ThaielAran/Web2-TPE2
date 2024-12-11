@@ -4,7 +4,7 @@
 
         <label>Review a Editar</label>
         <label>De que pelicula es</label>
-        <select required name="id_movie" class="form-control" value="<?= $review->id_review ?>>
+        <select required name="id_movie" class="form-control" value="<?= $review->id_movie ?>">
             <option selected disabled>Seleccione la pelicula</option>
             <?php foreach ($movies as $movie) : ?>
                 <option value="<?= $movie->id_movie ?>"><?= $movie->title ?></option>

@@ -15,7 +15,7 @@ ACCION                         URL                      DESTINO
 Mostrar todas las reseñas      /reviews                 review.controller->showReviews()
 Mostrar reseña                 /reviews/id              review.controller->showReview($id)
 Cargar reseña                  /addReview               review.controller->add()
-Modificar reseña               /editReview/id           review.controller->editReviewForm($id)
+Modificar reseña               /editReviewForm/id       review.controller->editReviewForm($id)
 Enviar cambios                 /editReview/id           review.controller->editReview($id)
 Eliminar reseña                /removeReview/id         review.controller->remove($id)
 
